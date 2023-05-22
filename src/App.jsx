@@ -1,9 +1,9 @@
-import FormikContainer from "./components/FormikContainer";
+import LoginForm from "./components/login-form/LoginForm.jsx";
 
 function App() {
   return (
     <main className="App">
-      <FormikContainer />
+      <LoginForm />
     </main>
   );
 }
