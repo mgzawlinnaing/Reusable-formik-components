@@ -24,13 +24,13 @@ const LoginForm = () => {
       {(formik) => (
         <Form>
           <FormikControl
-            control="input"
+            control="chakra-input"
             type="email"
             label="Email"
             name="email"
           />
           <FormikControl
-            control="input"
+            control="chakra-input"
             type="password"
             label="Password"
             name="password"

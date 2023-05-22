@@ -1,10 +1,13 @@
+import { ThemeProvider, theme } from "@chakra-ui/react";
 import LoginForm from "./components/login-form/LoginForm.jsx";
 
 function App() {
   return (
-    <main className="App">
-      <LoginForm />
-    </main>
+    <ThemeProvider theme={theme}>
+      <main className="App">
+        <LoginForm />
+      </main>
+    </ThemeProvider>
   );
 }
 
