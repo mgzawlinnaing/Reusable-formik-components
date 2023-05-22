@@ -9,13 +9,13 @@ const RadioButton = (props) => {
       <label>{label}</label>
       <Field name={name} {...rest}>
         {({ field }) => {
-          console.log("Field:", field);
           return options.map((option) => (
             <Fragment key={option.key}>
               <input
                 type="radio"
                 id={option.value}
                 {...field}
+                {...rest}
                 value={option.value}
                 checked={field.value === option.value}
               />

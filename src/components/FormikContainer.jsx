@@ -58,19 +58,33 @@ const FormikContainer = () => {
     selectOption: "",
     radioOption: "",
     checkboxOption: [],
+    birthDate: null,
+  };
+
+  const parseDate = (key, value) => {
+    if (typeof value === "string") {
+      const dateRegex = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/;
+      if (dateRegex.test(value)) {
+        return new Date(value);
+      }
+    }
+    return value;
   };
 
   const validationSchema = Yup.object({
     email: Yup.string().required("Email is required!"),
     description: Yup.string().required("Description is required!"),
     selectOption: Yup.string().required("Please select an option!"),
-    radioOption: Yup.string().required(
-      "Please at least choose a radio button!"
-    ),
-    checkboxOption: Yup.array().required("Please atleast check a box!"),
+    radioOption: Yup.string().required("Please choose a radio button!"),
+    checkboxOption: Yup.array().min(1, "Please check at least one box!"),
+    birthDate: Yup.date().required("Birth date is required!").nullable(),
   });
 
-  const onSubmit = (values) => console.log("Form data:", values);
+  const onSubmit = (values) => {
+    console.log("Form data:", values);
+    console.log("Saved data:", JSON.parse(JSON.stringify(values), parseDate));
+  };
+
   return (
     <Formik
       initialValues={initialValues}
@@ -98,17 +112,26 @@ const FormikContainer = () => {
             name="selectOption"
             options={dropdownOptions}
           />
+
           <FormikControl
             control="radio"
             label="Radio topic"
             name="radioOption"
             options={radioOptions}
           />
+
           <FormikControl
             control="checkbox"
             label="Checkbox topics"
             name="checkboxOption"
             options={checkboxOptions}
+          />
+
+          <FormikControl
+            control="date"
+            label="Pick a date"
+            name="birthDate"
+            placeholder="MM/DD/YYYY"
           />
           <button type="submit">Submit</button>
         </Form>

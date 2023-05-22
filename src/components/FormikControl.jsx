@@ -3,6 +3,7 @@ import Input from "./form-components/Input";
 import RadioButton from "./form-components/RadioButton";
 import Select from "./form-components/Select";
 import TextArea from "./form-components/TextArea";
+import DatePicker from "./form-components/DatePicker.jsx";
 
 const FormikControl = (props) => {
   const { control, ...rest } = props;
@@ -19,6 +20,7 @@ const FormikControl = (props) => {
     case "checkbox":
       return <CheckBoxGroup {...rest} />;
     case "date":
+      return <DatePicker {...rest}/>
     default:
       return null;
   }

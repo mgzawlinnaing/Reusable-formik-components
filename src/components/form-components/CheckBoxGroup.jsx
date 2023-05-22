@@ -16,6 +16,7 @@ const CheckBoxGroup = (props) => {
                 type="checkbox"
                 id={option.value}
                 {...field}
+                {...rest}
                 value={option.value}
                 checked={field.value.includes(option.value)}
               />
@@ -24,7 +25,7 @@ const CheckBoxGroup = (props) => {
           ));
         }}
       </Field>
-      <ErrorMessage name={name} component={ErrorText} />
+      <ErrorMessage component={ErrorText} name={name} />
     </div>
   );
 };
